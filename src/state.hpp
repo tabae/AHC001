@@ -4,6 +4,9 @@
 #include "common.hpp"
 #include "ryuka.hpp"
 #include <numeric>
+#include <algorithm>
+
+using namespace std;
 
 extern Input in;
 extern RandGenerator ryuka;
