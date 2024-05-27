@@ -52,7 +52,7 @@ State State::initState() {
                 const ll d = res.pos[i].d + dd[k];
                 if(common::in_field(a, b, c, d)) {
                     const Rect new_rect = Rect(a, b, c, d);
-                    if(new_rect.size() < in.r[i] && !common::is_overlap(new_rect, res.pos, i)) {
+                    if(common::calc_p(i, res.pos[i]) < common::calc_p(i, new_rect) && !common::is_overlap(new_rect, res.pos, i)) {
                         res.pos[i] = new_rect;
                         enough_space = true;
                         break;

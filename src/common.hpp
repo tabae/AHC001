@@ -34,6 +34,7 @@ struct Rect {
 
 namespace common {
     inline bool in_base(const int, const Rect&);
+    inline double calc_p(const int, const Rect&);
     inline ll calc_score(const vector<Rect>&);
     inline bool is_overlap(const Rect&, const Rect&);
     inline bool is_overlap(const Rect&, const vector<Rect>&, const int);
@@ -62,6 +63,14 @@ inline bool common::in_base(const int i, const Rect& rect) {
     const bool in_y = rect.b <= in.y[i] && in.y[i] < rect.d;
     return in_x && in_y;
 }
+
+inline double common::calc_p(const int i, const Rect& rect) {
+    const double s = rect.size();
+    const double r = in.r[i];
+    const double tmp = 1 - min(r, s) / max(r, s);
+    const double res = 1 - tmp * tmp;
+    return res;
+} 
 
 inline ll common::calc_score(const vector<Rect>& out) {
     double p_sum = 0;
