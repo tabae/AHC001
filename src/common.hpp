@@ -36,6 +36,7 @@ namespace common {
     inline bool in_base(const int, const Rect&);
     inline double calc_p(const int, const Rect&);
     inline ll calc_score(const vector<Rect>&);
+    inline double calc_area_usage(const vector<Rect>&);
     inline bool is_overlap(const Rect&, const Rect&);
     inline bool is_overlap(const Rect&, const vector<Rect>&, const int);
     inline bool in_field(const Rect&);
@@ -89,6 +90,16 @@ inline ll common::calc_score(const vector<Rect>& out) {
         }
     }
     return round(p_sum * ten_9);
+}
+
+inline double common::calc_area_usage(const vector<Rect>& out) {
+    const double sum = L * L;
+    double used = 0;
+    for(int i = 0; i < in.n; i++) {
+        used += out[i].size();
+    }
+    const double usage = used / sum;
+    return usage;
 }
 
 inline bool common::is_overlap(const Rect& x, const Rect& y) {

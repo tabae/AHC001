@@ -13,4 +13,5 @@ int main() {
     common::print(stat.pos);
 
     cerr << "my score = " << stat.score << endl;
+    cerr << "area usage = " << common::calc_area_usage(stat.pos) << endl;
 }
