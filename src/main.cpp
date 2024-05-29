@@ -1,5 +1,6 @@
 #include "common.hpp"
 #include "state.hpp"
+#include "annealer.hpp"
 #include <iostream>
 using namespace std;
 
@@ -9,7 +10,8 @@ int main() {
 
     in.read();
 
-    State stat = State::initState();
+    IterationControl<State> sera;
+    State stat = sera.climb(1.8, State::initState());
     common::print(stat.pos);
 
     cerr << "my score = " << stat.score << endl;

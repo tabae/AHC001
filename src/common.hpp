@@ -42,6 +42,7 @@ namespace common {
     inline bool in_field(const Rect&);
     inline bool in_field(const ll, const ll, const ll, const ll);
     void print(const vector<Rect>&);
+    vector<int> enumerate_overlaped_rect(const Rect&, const vector<Rect>&, const int);
 };
 
 extern Input in;
@@ -137,5 +138,15 @@ void common::print(const vector<Rect>& rect) {
         cout << rect[i].a << " " << rect[i].b << " " << rect[i].c << " " << rect[i].d << endl;
     }
 } 
+
+vector<int> common::enumerate_overlaped_rect(const Rect& r, const vector<Rect>& v, const int skip = -1) {
+    vector<int> res;
+    for(int j = 0; j < v.size(); j++) {
+        if(j != skip && is_overlap(r, v[j])) {
+            res.push_back(j);
+        }
+    }
+    return res;
+}
 
 #endif

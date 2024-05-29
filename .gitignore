@@ -36,3 +36,6 @@ tools/*
 
 # VSCode
 .vscode/*
+
+*.svg
+run_seed_zero.sh
