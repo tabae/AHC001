@@ -11,7 +11,7 @@ int main() {
     in.read();
 
     IterationControl<State> sera;
-    State stat = sera.anneal(100, 1000, 1, State::initState());
+    State stat = sera.climb(1.8, State::initState());
     common::print(stat.pos);
 
     cerr << "my score = " << stat.score << endl;
