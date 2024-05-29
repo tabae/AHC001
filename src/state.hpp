@@ -132,6 +132,25 @@ State State::generateState(const State& input_state) {
         }
     }
 
+    // 面積超過により、スコアが悪化するのを防ぐため、最適な長さに合わせる
+    {
+        int best_delta = -1;
+        double best_p = -1;
+        for(int tmp_delta = 1; tmp_delta <= delta; tmp_delta++) {
+            const int a = res.pos[i].a + da[k] * tmp_delta;
+            const int b = res.pos[i].b + db[k] * tmp_delta;
+            const int c = res.pos[i].c + dc[k] * tmp_delta;
+            const int d = res.pos[i].d + dd[k] * tmp_delta;
+            const Rect new_rect = Rect(a, b, c, d);
+            const double p = common::calc_p(i, new_rect);
+            if(p > best_p) {
+                best_p = p;
+                best_delta = tmp_delta;
+            }
+        }
+        delta = best_delta;
+    }
+
     // 伸ばす
     res.pos[i].a = max(0LL, res.pos[i].a + da[k] * delta);
     res.pos[i].b = max(0LL, res.pos[i].b + db[k] * delta);
